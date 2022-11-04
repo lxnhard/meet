@@ -6,9 +6,10 @@ import { extractLocations } from '../api';
 
 describe('<EventList /> component', () => {
 
-  let CitySearchWrapper;
+  let locations, CitySearchWrapper;
   beforeAll(() => {
-    CitySearchWrapper = shallow(<CitySearch />);
+    locations = extractLocations(mockData);
+    CitySearchWrapper = shallow(<CitySearch locations={locations} />);
   });
 
   test('render text input', () => {
@@ -34,7 +35,6 @@ describe('<EventList /> component', () => {
   });
 
   test('render list of suggestions correctly', () => {
-    const locations = extractLocations(mockData);
     CitySearchWrapper.setState({ suggestions: locations });
     const suggestions = CitySearchWrapper.state('suggestions');
     expect(CitySearchWrapper.find('.suggestions li')).toHaveLength(suggestions.length + 1);
@@ -43,4 +43,15 @@ describe('<EventList /> component', () => {
     }
   });
 
+  test('suggestion list match the query when changed', () => {
+    CitySearchWrapper.setState({ query: '', suggestions: [] });
+    CitySearchWrapper.find(".city").simulate("change", {
+      target: { value: "Berlin" },
+    });
+    const query = CitySearchWrapper.state("query");
+    const filteredLocations = locations.filter((location) => {
+      return location.toUpperCase().indexOf(query.toUpperCase()) > -1;
+    });
+    expect(CitySearchWrapper.state("suggestions")).toEqual(filteredLocations);
+  });
 });
