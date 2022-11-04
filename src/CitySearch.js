@@ -26,6 +26,12 @@ class CitySearch extends Component {
     );
   }
 
+  handleItemClicked = (suggestion) => {
+    this.setState({
+      query: suggestion
+    });
+  }
+
   render() {
     return (
       <div className="CitySearch">
@@ -37,7 +43,7 @@ class CitySearch extends Component {
         />
         <ul className="suggestions">
           {this.state.suggestions.map((suggestion) => (
-            <li key={suggestion}>
+            <li key={suggestion} onClick={() => this.handleItemClicked(suggestion)}>
               {suggestion}
             </li>
           ))}
