@@ -14,24 +14,29 @@ const mockData = [
     {
       email: "fullstackwebdev@careerfoundry.com",
       self: true
-    }, organizer:
+    },
+    organizer:
     {
       email: "fullstackwebdev@careerfoundry.com",
       self: true
-    }, start:
+    },
+    start:
     {
       dateTime: "2020-05-19T16:00:00+02:00",
       timeZone: "Europe/Berlin"
-    }, end:
+    },
+    end:
     {
       dateTime: "2020-05-19T17:00:00+02:00",
       timeZone: "Europe/Berlin"
-    }, recurringEventId: "4eahs9ghkhrvkld72hogu9ph3e",
+    },
+    recurringEventId: "4eahs9ghkhrvkld72hogu9ph3e",
     originalStartTime:
     {
       dateTime: "2020-05-19T16:00:00+02:00",
       timeZone: "Europe/Berlin"
-    }, iCalUID: "4eahs9ghkhrvkld72hogu9ph3e@google.com",
+    },
+    iCalUID: "4eahs9ghkhrvkld72hogu9ph3e@google.com",
     sequence: 0, reminders:
     {
       useDefault: true
