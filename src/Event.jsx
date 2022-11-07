@@ -9,12 +9,8 @@ class Event extends Component {
     }
   }
 
-  handleExpand = () => {
-    this.setState({ isExpanded: true });
-  }
-
-  handleCollapse = () => {
-    this.setState({ isExpanded: false });
+  toggleExpand = () => {
+    this.state.isExpanded ? this.setState({ isExpanded: false }) : this.setState({ isExpanded: true });
   }
 
   render() {
@@ -22,13 +18,14 @@ class Event extends Component {
     let { isExpanded } = this.state;
 
     return (
-      <>
+      <div className="event">
+
         {/* Render overview */}
         {!isExpanded && (
           <div className='event-overview'>
             <div className='start-time'>{event.start.dateTime}</div>
             <div className='summary'>{event.summary}</div>
-            <button className='btn-details' onClick={this.handleExpand}>Details</button>
+            <button className='btn-details' onClick={this.toggleExpand}>Details</button>
           </div >
         )}
 
@@ -40,11 +37,11 @@ class Event extends Component {
             <div className='end-time'>{event.end.dateTime}</div>
             <div className='location'>{event.location}</div>
             <div className='description'>{event.description}</div>
-            <button className='btn-collapse' onClick={this.handleCollapse} >Collapse</button>
+            <button className='btn-collapse' onClick={this.toggleExpand}>Collapse</button>
           </div >
         )}
 
-      </>
+      </div>
     );
   }
 }
