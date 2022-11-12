@@ -23,9 +23,9 @@ class Event extends Component {
         {/* Render overview */}
         {!isExpanded && (
           <div className='event-overview'>
-            <div className='start-time'>{event.start.dateTime}</div>
             <div className='summary'>{event.summary}</div>
-            <button className='btn-details' onClick={this.toggleExpand}>Details</button>
+            <div className='start-time'>{event.start.dateTime}</div>
+            <button className='btn-details' onClick={this.toggleExpand}>Show Details</button>
           </div >
         )}
 
@@ -37,7 +37,7 @@ class Event extends Component {
             <div className='end-time'>{event.end.dateTime}</div>
             <div className='location'>{event.location}</div>
             <div className='description'>{event.description}</div>
-            <button className='btn-collapse' onClick={this.toggleExpand}>Collapse</button>
+            <button className='btn-collapse' onClick={this.toggleExpand}>Hide Details</button>
           </div >
         )}
 
