@@ -2,7 +2,9 @@
 
 .App {
   text-align: center;
+  margin: 0 auto;
   padding: 2% 5%;
+  max-width: 768px;
 }
 
 .App * {
@@ -40,6 +42,9 @@ input[type="number"] {
 
 .city {
   width: 250px;
+
+  margin: 0 auto 0 0;
+  padding: 0;
 }
 
 .CitySearch {
@@ -47,7 +52,6 @@ input[type="number"] {
   flex-direction: column;
   flex-basis: 300px;
   max-width: 300px;
-  margin: auto;
   position: relative;
 }
 
