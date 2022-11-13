@@ -16,14 +16,16 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event-overview')).toHaveLength(1);
   });
 
-  test('render start time, summary in overview', () => {
+  test('render start time, summary, location in overview', () => {
     expect(EventWrapper.find('.start-time')).toHaveLength(1);
     expect(EventWrapper.find('.summary')).toHaveLength(1);
+    expect(EventWrapper.find('.location')).toHaveLength(1);
   });
 
   test('render correct start time, summary in overview', () => {
     expect(EventWrapper.find('.start-time').text()).toBe(mockData[0].start.dateTime);
     expect(EventWrapper.find('.summary').text()).toBe(mockData[0].summary);
+    expect(EventWrapper.find('.location').text()).toBe(mockData[0].location);
   });
 
   test('render details button on default', () => {

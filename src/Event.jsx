@@ -24,7 +24,9 @@ class Event extends Component {
         {!isExpanded && (
           <div className='event-overview'>
             <div className='summary'>{event.summary}</div>
+            {/* <div className='start-time'>{new Date(event.start.dateTime).toLocaleString('en-GB').slice(0, -3)}</div> */}
             <div className='start-time'>{event.start.dateTime}</div>
+            <div className='location'>{event.location}</div>
             <button className='btn-details' onClick={this.toggleExpand}>Show Details</button>
           </div >
         )}
