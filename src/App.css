@@ -3,7 +3,6 @@
 .App {
   text-align: center;
   margin: 0 auto;
-  padding: 2% 5%;
   max-width: 768px;
 }
 
@@ -28,6 +27,12 @@ p {
   display: block;
 }
 
+
+.flex-container {
+  display: flex;
+}
+
+
 input[type="text"],
 input[type="number"] {
   padding: 8px 6px 8px 10px;
@@ -42,7 +47,6 @@ input[type="number"] {
 
 .city {
   width: 250px;
-
   margin: 0 auto 0 0;
   padding: 0;
 }
@@ -53,13 +57,14 @@ input[type="number"] {
   flex-basis: 300px;
   max-width: 300px;
   position: relative;
+  margin: auto auto 0 0;
 }
 
 .suggestions {
   width: 250px;
   position: absolute;
   z-index: 2;
-  align-self: center;
+  align-self: flex-start;
   margin: 0;
   top: 43px;
   font-size: 14px;

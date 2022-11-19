@@ -52,8 +52,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <NumberOfEvents updateEvents={this.updateEvents} />
+        <div className="flex-container">
+          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <NumberOfEvents updateEvents={this.updateEvents} />
+        </div>
         <EventList events={this.state.events} />
       </div>
     );
