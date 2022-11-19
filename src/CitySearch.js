@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 
-
-
-
 class CitySearch extends Component {
 
   constructor() {
@@ -32,7 +29,6 @@ class CitySearch extends Component {
       query: suggestion,
       showSuggestions: false
     });
-
     this.props.updateEvents(suggestion);
   }
 
