@@ -72,6 +72,13 @@ describe('<App /> integration', () => {
 
   // Integrations tests for NumberOfEvents 
 
+
+  test('default number of events (specified in state) displayed when opening app', async () => {
+    const AppWrapper = await mount(<App />);
+    expect(AppWrapper.state('events')).toHaveLength(AppWrapper.state('numberOfEvents'));
+    AppWrapper.unmount();
+  });
+
   test('change NumberOfEvents state (eventCountInput) to number input when changed', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
