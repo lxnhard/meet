@@ -70,6 +70,43 @@ describe('<App /> integration', () => {
     AppWrapper.unmount();
   });
 
-  // dawdaw
+  // Integrations tests for NumberOfEvents 
+
+  test('change NumberOfEvents state (eventCountInput) to number input when changed', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 16 } };
+    await NumberOfEventsWrapper.find('.number-input').simulate('change', eventObject);
+    expect(NumberOfEventsWrapper.state('eventCountInput')).toBe(16);
+    AppWrapper.unmount();
+  });
+
+  test('change App state (numberOfEvents) to number input when changed', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 16 } };
+    await NumberOfEventsWrapper.find('.number-input').simulate('change', eventObject);
+    expect(AppWrapper.state('numberOfEvents')).toBe(16);
+    AppWrapper.unmount();
+  });
+
+  test('event list has length of input number (example 1)', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 1 } };
+    await NumberOfEventsWrapper.find('.number-input').simulate('change', eventObject);
+    expect(AppWrapper.state('events')).toHaveLength(AppWrapper.state('numberOfEvents'));
+    AppWrapper.unmount();
+  });
+
+
+  test('event list has length of input number (example 2)', async () => {
+    const AppWrapper = mount(<App />);
+    const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+    const eventObject = { target: { value: 2 } };
+    await NumberOfEventsWrapper.find('.number-input').simulate('change', eventObject);
+    expect(AppWrapper.state('events')).toHaveLength(AppWrapper.state('numberOfEvents'));
+    AppWrapper.unmount();
+  });
 
 });
