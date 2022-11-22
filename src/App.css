@@ -4,6 +4,7 @@
   text-align: center;
   margin: 0 auto;
   max-width: 768px;
+  padding: 0 20px;
 }
 
 .App * {
@@ -30,11 +31,12 @@ p {
 
 .flex-container {
   display: flex;
+  margin-top: 20px;
+  flex-basis: 250px;
 }
 
 
-input[type="text"],
-input[type="number"] {
+input[type="text"] {
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
@@ -46,7 +48,7 @@ input[type="number"] {
 }
 
 .city {
-  width: 250px;
+  max-width: 250px;
   margin: 0 auto 0 0;
   padding: 0;
 }
@@ -54,8 +56,8 @@ input[type="number"] {
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 300px;
-  max-width: 300px;
+  flex-basis: 250px;
+  max-width: 250px;
   position: relative;
   margin: auto auto 0 0;
 }
@@ -86,6 +88,34 @@ input[type="number"] {
 .suggestions>li:hover {
   background-color: #bcdcdb;
 }
+
+.numberOfEvents {
+  max-width: 150px;
+  margin: 0 0 0 auto;
+  padding: 0;
+  text-align: end;
+  font-size: 14px;
+}
+
+.number-label {
+  display: inline-block;
+  margin: 0;
+}
+
+.number-input {
+  line-height: 20px;
+  height: 38px;
+  max-width: 100px;
+  text-align: end;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  line-height: 38px;
+  margin-left: 6px;
+}
+
+
 
 .event {
   padding: 10px 10px 35px;
@@ -124,28 +154,6 @@ input[type="number"] {
 
 .description {
   overflow-x: hidden;
-}
-
-.numberOfEvents {
-  width: 200px;
-  margin: 20px 0 0 auto;
-  padding: 0;
-  text-align: end;
-}
-
-.numberOfEvents {
-  width: 100px;
-  margin: 20px 0 0 auto;
-}
-
-.number-label {
-  font-size: 12px;
-  text-align: end;
-}
-
-.number-input {
-  width: 100px;
-  text-align: end;
 }
 
 .button-wrapper {
