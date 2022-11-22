@@ -19,8 +19,8 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.number-input').prop('value')).toBe(numberOfEvents);
   });
 
-  test('show default number of 25', () => {
-    const numberOfEvents = 25;
+  test('show default number of 50', () => {
+    const numberOfEvents = 50;
     expect(NumberOfEventsWrapper.find('.number-input').prop('value')).toBe(numberOfEvents);
   });
 
