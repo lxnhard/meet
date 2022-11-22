@@ -56,10 +56,10 @@ input[type="text"] {
 .CitySearch {
   display: flex;
   flex-direction: column;
-  flex-basis: 250px;
-  max-width: 250px;
+  flex-basis: 200px;
   position: relative;
   margin: auto auto 0 0;
+  flex-shrink: 2;
 }
 
 .suggestions {
@@ -91,7 +91,6 @@ input[type="text"] {
 
 .numberOfEvents {
   max-width: 150px;
-  margin: 0 0 0 auto;
   padding: 0;
   text-align: end;
   font-size: 14px;
