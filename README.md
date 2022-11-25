@@ -48,17 +48,18 @@ I should be able to „show and hide event details“
 So that I can see more or less details about the event
 
 SCENARIO 1: AN EVENT ELEMENT IS COLLAPSED BY DEFAULT.
-- Given user hasn’t clicked any event
-- When the user opens an event list 
+- Given user hasn’t clicked any event's "details" button
+- When the app is open
 - Then the user should see a list of all upcoming events with condensed details
 
 SCENARIO 2: USER CAN EXPAND AN EVENT TO SEE ITS DETAILS.
-- Given an event list is open
+- Given the app is open
 - When the user clicks the expand button for a specific event
 - Then the user should see an expanded view with more details about the event
 
 SCENARIO 3: USER CAN COLLAPSE AN EVENT TO HIDE ITS DETAILS.
-- Given the view of an event is expanded
+- Given the App is open 
+And view of an event is expanded
 - When the user clicks the collapse button for a specific event
 - Then the user should see an condensed view with less details about the event (default view)
 
@@ -68,15 +69,15 @@ As a user
 I should be able to „specify the number of events“  
 So that I can decide how many events I want to see listed
 
-SCENARIO 1: WHEN USER HASN’T SPECIFIED A NUMBER, 32 IS THE DEFAULT NUMBER.
+SCENARIO 1: WHEN USER HASN’T SPECIFIED A NUMBER, 50 IS THE DEFAULT NUMBER.
 - Given the user has not specified the number of events to be shown
 - When an event list is open 
-- Then the user should see a list of 32 upcoming events 
+- Then the user should see a list of max. 50 upcoming events 
 
 SCENARIO 2: USER CAN CHANGE THE NUMBER OF EVENTS THEY WANT TO SEE.
 - Given an event list is open
 - When the user specifies the number of X events to be shown
-- Then the user should see a list of X upcoming events 
+- Then the user should see a list of max. X upcoming events 
 
 #### FEATURE 4: USE THE APP WHEN OFFLINE
 **User Story:**  
