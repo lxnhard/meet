@@ -82,18 +82,18 @@ describe('<App /> integration', () => {
   test('change NumberOfEvents state (eventCountInput) to number input when changed', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventObject = { target: { value: 16 } };
+    const eventObject = { target: { value: 1 } };
     await NumberOfEventsWrapper.find('.number-input').simulate('change', eventObject);
-    expect(NumberOfEventsWrapper.state('eventCountInput')).toBe(16);
+    expect(NumberOfEventsWrapper.state('eventCountInput')).toBe(1);
     AppWrapper.unmount();
   });
 
   test('change App state (numberOfEvents) to number input when changed', async () => {
     const AppWrapper = mount(<App />);
     const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
-    const eventObject = { target: { value: 16 } };
+    const eventObject = { target: { value: 1 } };
     await NumberOfEventsWrapper.find('.number-input').simulate('change', eventObject);
-    expect(AppWrapper.state('numberOfEvents')).toBe(16);
+    expect(AppWrapper.state('numberOfEvents')).toBe(1);
     AppWrapper.unmount();
   });
 
