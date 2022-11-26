@@ -7,11 +7,6 @@ import reportWebVitals from "./reportWebVitals";
 import * as atatus from 'atatus-spa';
 atatus.config('4ca155d81ccf49faad57d879ab5899ef', { debugMode: true }).install();
 
-const cors = require('cors');
-// all origins allowed:
-app.use(cors());
-
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
