@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import * as atatus from 'atatus-spa';
-atatus.config('5fcf3cc867d04d37bd7f22a8d4684f77', { debugMode: true }).install();
+atatus.config('5b20538cbe304dbf9399768e2f9003b3').install();
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,8 +13,6 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-atatus.notify(new Error('Test Atatus Setup'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
@@ -26,3 +24,5 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+atatus.notify(new Error('Test Atatus Setup'));
