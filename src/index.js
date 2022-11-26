@@ -5,7 +5,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import * as atatus from 'atatus-spa';
-atatus.config('4ca155d81ccf49faad57d879ab5899ef', { debugMode: true }).install();
+atatus.config('5fcf3cc867d04d37bd7f22a8d4684f77', { debugMode: true }).install();
 
 ReactDOM.render(
   <React.StrictMode>
