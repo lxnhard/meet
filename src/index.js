@@ -5,7 +5,12 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import * as atatus from 'atatus-spa';
-atatus.config('4ca155d81ccf49faad57d879ab5899ef').install();
+atatus.config('4ca155d81ccf49faad57d879ab5899ef', { debugMode: true }).install();
+
+const cors = require('cors');
+// all origins allowed:
+app.use(cors());
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +18,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
+
+atatus.notify(new Error('Test Atatus Setup'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
