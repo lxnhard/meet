@@ -33,6 +33,7 @@ class NumberOfEvents extends Component {
           value={this.state.eventCountInput}
           onChange={this.handleNumber}
         >
+          <option value="1">1</option>
           <option value="25">25</option>
           <option value="50">50</option>
           <option value="75">75</option>

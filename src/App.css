@@ -114,7 +114,18 @@ input[type="text"] {
   margin-left: 6px;
 }
 
+.paginator {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
+.button-left {
+  float: left;
+}
+
+.button-right {
+  float: right;
+}
 
 .event {
   padding: 10px 10px 35px;
