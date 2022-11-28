@@ -35,6 +35,26 @@ p {
   flex-basis: 250px;
 }
 
+.alerts {
+  display: block;
+  margin-bottom: 65px;
+  font-size: 12px;
+}
+
+.CitySearch {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 200px;
+  position: relative;
+  margin: auto auto 0 0;
+  flex-shrink: 2;
+}
+
+.city {
+  max-width: 250px;
+  margin: 0 auto 0 0;
+  padding: 0;
+}
 
 input[type="text"] {
   padding: 8px 6px 8px 10px;
@@ -45,21 +65,6 @@ input[type="text"] {
   line-height: 20px;
   align-self: center;
   height: 38px;
-}
-
-.city {
-  max-width: 250px;
-  margin: 0 auto 0 0;
-  padding: 0;
-}
-
-.CitySearch {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 200px;
-  position: relative;
-  margin: auto auto 0 0;
-  flex-shrink: 2;
 }
 
 .suggestions {
@@ -94,6 +99,7 @@ input[type="text"] {
   padding: 0;
   text-align: end;
   font-size: 14px;
+  margin-top: auto;
 }
 
 .number-label {
