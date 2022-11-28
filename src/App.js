@@ -12,7 +12,7 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 50,
+    numberOfEvents: 20,
     page: 1
   }
 

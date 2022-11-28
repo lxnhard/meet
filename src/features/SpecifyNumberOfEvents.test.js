@@ -8,7 +8,7 @@ const feature = loadFeature('./src/features/SpecifyNumberOfEvents.feature');
 
 
 defineFeature(feature, test => {
-  test('When user hasn’t specified a number, 50 is the default number.', ({ given, when, then }) => {
+  test('When user hasn’t specified a number, 20 is the default number.', ({ given, when, then }) => {
 
     given('the user has not specified the number of events to be shown', () => {
 
@@ -19,8 +19,8 @@ defineFeature(feature, test => {
       AppWrapper = mount(<App />);
     });
 
-    then('the user should see a list of max. 50 upcoming events', () => {
-      expect(AppWrapper.find('.event').length).toBeLessThanOrEqual(50);
+    then('the user should see a list of max. 20 upcoming events', () => {
+      expect(AppWrapper.find('.event').length).toBeLessThanOrEqual(20);
     });
   });
 

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 class NumberOfEvents extends Component {
   state = {
-    eventCountInput: 50
+    eventCountInput: 20
   }
 
 
