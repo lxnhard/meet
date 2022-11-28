@@ -22,13 +22,13 @@ class Paginator extends Component {
       <div className="paginator">
         <span>
           {this.props.page > 1 &&
-            <button onClick={this.handlePageDown} className="button-left">&lt;</button>}
+            <button onClick={this.handlePageDown} className="btn-arrow btn-left"></button>}
         </span>
         {maxPages > 1 &&
           <span>Page {this.props.page}/{maxPages}</span>}
         <span>
           {this.props.page < maxPages &&
-            <button onClick={this.handlePageUp} className="button-right">&gt;</button>}
+            <button onClick={this.handlePageUp} className="btn-arrow btn-right"></button>}
         </span>
       </div>
     )

@@ -27,7 +27,7 @@ class Event extends Component {
             {/* <div className='start-time'>{new Date(event.start.dateTime).toLocaleString('en-GB').slice(0, -3)}</div> */}
             <div className='start-time'>{event.start.dateTime}</div>
             <div className='location'>{event.location}</div>
-            <button className='btn-details' onClick={this.toggleExpand}>Show Details</button>
+            <button className='btn-arrow btn-details' onClick={this.toggleExpand}></button>
           </div >
         )}
 
@@ -39,7 +39,7 @@ class Event extends Component {
             <div className='end-time'>{event.end.dateTime}</div>
             <div className='location'>{event.location}</div>
             <div className='description'>{event.description}</div>
-            <button className='btn-collapse' onClick={this.toggleExpand}>Hide Details</button>
+            <button className='btn-arrow btn-collapse' onClick={this.toggleExpand}></button>
           </div >
         )}
 
