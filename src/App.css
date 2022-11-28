@@ -4,7 +4,7 @@
   text-align: center;
   margin: 0 auto;
   max-width: 768px;
-  padding: 0 20px;
+  padding: 0 20px 20px 20px;
 }
 
 .App * {
@@ -124,6 +124,7 @@ input[type="text"] {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 }
 
 .button-left {
