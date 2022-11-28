@@ -23,19 +23,12 @@ class App extends Component {
     let lastEvent = newPage ? (newPage * eventCount_new) : eventCount_new;
 
     getEvents().then((events) => {
+
       if (newPage) {
         this.setState(
           { page: newPage }
         );
-      }
-
-      if (eventCount) {
-        this.setState({
-          page: 1
-        });
-      }
-
-      if (location) {
+      } else if (location) {
         const locationEvents = (location === 'all') ?
           events :
           events.filter((event) =>
@@ -43,13 +36,15 @@ class App extends Component {
         this.setState({
           events: locationEvents.slice(firstEvent, lastEvent),
           numberOfEvents: eventCount_new,
-          eventsTotalCount: locationEvents.length
+          eventsTotalCount: locationEvents.length,
+          page: 1
         });
-      } else {
+      } else if (eventCount) {
         this.setState({
           events: events.slice(firstEvent, lastEvent),
           numberOfEvents: eventCount_new,
-          eventsTotalCount: events.length
+          eventsTotalCount: events.length,
+          page: 1
         });
       }
     });
