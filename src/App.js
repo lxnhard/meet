@@ -12,6 +12,7 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
+    location: 'all',
     numberOfEvents: 20,
     page: 1,
     eventsTotalCount: null
@@ -35,15 +36,21 @@ class App extends Component {
             event.location === location);
         this.setState({
           events: locationEvents.slice(firstEvent, lastEvent),
+          location: location,
           numberOfEvents: eventCount_new,
           eventsTotalCount: locationEvents.length,
           page: 1
         });
       } else if (eventCount) {
+        const location = this.state.location;
+        const locationEvents = (location === 'all') ?
+          events :
+          events.filter((event) =>
+            event.location === location);
         this.setState({
-          events: events.slice(firstEvent, lastEvent),
+          events: locationEvents.slice(firstEvent, lastEvent),
           numberOfEvents: eventCount_new,
-          eventsTotalCount: events.length,
+          eventsTotalCount: locationEvents.length,
           page: 1
         });
       }
