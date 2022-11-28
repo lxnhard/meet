@@ -16,7 +16,6 @@ class Paginator extends Component {
 
   render() {
     const { eventsCount, numberOfEvents } = this.props;
-
     const maxPages = Math.ceil(eventsCount / numberOfEvents);
 
     return (
@@ -25,7 +24,7 @@ class Paginator extends Component {
           {this.props.page > 1 &&
             <button onClick={this.handlePageDown} className="button-left">&lt;</button>}
         </span>
-        {maxPages !== 1 &&
+        {maxPages > 1 &&
           <span>Page {this.props.page}/{maxPages}</span>}
         <span>
           {this.props.page < maxPages &&
