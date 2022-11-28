@@ -13,7 +13,8 @@ class App extends Component {
     events: [],
     locations: [],
     numberOfEvents: 20,
-    page: 1
+    page: 1,
+    eventsTotalCount: null
   }
 
   updateEvents = (location, eventCount, newPage) => {
@@ -41,12 +42,14 @@ class App extends Component {
             event.location === location);
         this.setState({
           events: locationEvents.slice(firstEvent, lastEvent),
-          numberOfEvents: eventCount_new
+          numberOfEvents: eventCount_new,
+          eventsTotalCount: locationEvents.length
         });
       } else {
         this.setState({
           events: events.slice(firstEvent, lastEvent),
-          numberOfEvents: eventCount_new
+          numberOfEvents: eventCount_new,
+          eventsTotalCount: events.length
         });
       }
     });
@@ -56,7 +59,7 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events: events.slice(0, this.state.numberOfEvents), locations: extractLocations(events), eventsCount: events.length });
+        this.setState({ events: events.slice(0, this.state.numberOfEvents), locations: extractLocations(events), eventsTotalCount: events.length });
       }
     });
   }
@@ -74,7 +77,7 @@ class App extends Component {
           <NumberOfEvents updateEvents={this.updateEvents} page={this.state.page} />
         </div>
         <EventList events={this.state.events} />
-        <Paginator page={this.state.page} updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} eventsCount={this.state.eventsCount} />
+        <Paginator page={this.state.page} updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} eventsTotalCount={this.state.eventsTotalCount} />
       </div>
     );
   }

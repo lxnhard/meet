@@ -15,8 +15,8 @@ class Paginator extends Component {
 
 
   render() {
-    const { eventsCount, numberOfEvents } = this.props;
-    const maxPages = Math.ceil(eventsCount / numberOfEvents);
+    const { eventsTotalCount, numberOfEvents } = this.props;
+    const maxPages = eventsTotalCount ? Math.ceil(eventsTotalCount / numberOfEvents) : 0;
 
     return (
       <div className="paginator">
