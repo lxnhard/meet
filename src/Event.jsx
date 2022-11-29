@@ -17,6 +17,22 @@ class Event extends Component {
     const { event } = this.props;
     let { isExpanded } = this.state;
 
+    function convertDateTime(DateTimeRaw) {
+      const userLocale =
+        navigator.languages && navigator.languages.length
+          ? navigator.languages[0]
+          : navigator.language;
+      console.log(userLocale);
+      const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      console.log(userTimeZone);
+      let DateTimeConv = new Date(DateTimeRaw).toLocaleString(userLocale, {
+        timeZone: userTimeZone,
+        dateStyle: 'medium',
+        timeStyle: 'short'
+      });
+      return DateTimeConv;
+    }
+
     return (
       <div className="event">
 
@@ -24,8 +40,7 @@ class Event extends Component {
         {!isExpanded && (
           <div className='event-overview'>
             <div className='summary'>{event.summary}</div>
-            {/* <div className='start-time'>{new Date(event.start.dateTime).toLocaleString('en-GB').slice(0, -3)}</div> */}
-            <div className='start-time'>{event.start.dateTime}</div>
+            <div className='start-time'>{convertDateTime(event.start.dateTime)}</div>
             <div className='location'>{event.location}</div>
             <button className='btn-arrow btn-details' onClick={this.toggleExpand}></button>
           </div >
@@ -35,8 +50,8 @@ class Event extends Component {
         {isExpanded && (
           <div className='event-details'>
             <div className='summary'>{event.summary}</div>
-            <div className='start-time'>{event.start.dateTime}</div>
-            <div className='end-time'>{event.end.dateTime}</div>
+            <div><span className='time-label'>Start: </span><span className='start-time'>{convertDateTime(event.start.dateTime)}</span></div>
+            <div><span className='time-label'>End: </span><span className='end-time'>{convertDateTime(event.end.dateTime)}</span></div>
             <div className='location'>{event.location}</div>
             <div className='description'>{event.description}</div>
             <button className='btn-arrow btn-collapse' onClick={this.toggleExpand}></button>
