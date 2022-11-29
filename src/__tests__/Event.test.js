@@ -22,8 +22,7 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.location')).toHaveLength(1);
   });
 
-  test('render correct start time, summary in overview', () => {
-    expect(EventWrapper.find('.start-time').text()).toBe(mockData[0].start.dateTime);
+  test('render correct summary, location in overview', () => {
     expect(EventWrapper.find('.summary').text()).toBe(mockData[0].summary);
     expect(EventWrapper.find('.location').text()).toBe(mockData[0].location);
   });
@@ -59,13 +58,11 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.description')).toHaveLength(1);
   });
 
-  test('render correct summary, start-time, end-time, description, location in detailed view', () => {
+  test('render correct summary, description, location in detailed view', () => {
     EventWrapper.setState({
       isExpanded: true
     });
     expect(EventWrapper.find('.summary').text()).toBe(mockData[0].summary);
-    expect(EventWrapper.find('.start-time').text()).toBe(mockData[0].start.dateTime);
-    expect(EventWrapper.find('.end-time').text()).toBe(mockData[0].end.dateTime);
     expect(EventWrapper.find('.location').text()).toBe(mockData[0].location);
     expect(EventWrapper.find('.description').text()).toBe(mockData[0].description);
   });
@@ -83,6 +80,66 @@ describe('<Event /> component', () => {
     });
     EventWrapper.find('.btn-collapse').simulate('click');
     expect(EventWrapper.state('isExpanded')).toBe(false);
+  });
+
+});
+
+
+describe('<Event /> component - correct time conversion', () => {
+
+  let EventWrapper;
+  beforeAll(() => {
+    EventWrapper = shallow(<Event event={mockData[0]} />);
+  });
+
+  let languageGetter;
+  let mockTimezone;
+
+  beforeEach(() => {
+    languageGetter = jest.spyOn(window.navigator, 'language', 'get');
+    languageGetter.mockReturnValue('en-US');
+
+    mockTimezone = undefined;
+    jest.spyOn(Intl, 'DateTimeFormat').mockImplementation(() => ({
+      resolvedOptions: () => ({
+        timeZone: "Europe/Berlin"
+      })
+    }));
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
+  test('render correct start time in collapsed state', () => {
+    let mockStartConvert = new Date(mockData[0].start.dateTime).toLocaleString('en-US', {
+      timeZone: mockTimezone,
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    });
+
+    expect(EventWrapper.find('.start-time').text()).toBe(mockStartConvert);
+  });
+
+  test('render correct start + end time in expanded  state', () => {
+    let mockStartConvert = new Date(mockData[0].start.dateTime).toLocaleString('en-US', {
+      timeZone: mockTimezone,
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    });
+
+    let mockEndConvert = new Date(mockData[0].end.dateTime).toLocaleString('en-US', {
+      timeZone: mockTimezone,
+      dateStyle: 'medium',
+      timeStyle: 'short'
+    });
+
+    EventWrapper.setState({
+      isExpanded: true
+    });
+
+    expect(EventWrapper.find('.start-time').text()).toBe(mockStartConvert);
+    expect(EventWrapper.find('.end-time').text()).toBe(mockEndConvert);
   });
 
 });
