@@ -74,7 +74,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header"><a href="/" title="Meet app" className="brand">Meet app</a></div>
+        <div className="header"><a href="/" title="Meet app" className="brand">Meetloaf</a></div>
         <div className="flex-container">
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents updateEvents={this.updateEvents} page={this.state.page} />
