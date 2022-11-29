@@ -34,7 +34,7 @@ class CitySearch extends Component {
         {
           query: value,
           suggestions,
-          infoText: 'We can\'t find any events in the city you are looking for.',
+          infoText: 'We can\'t find the city you are looking for.',
           errorText: ''
         }
       );
@@ -72,11 +72,11 @@ class CitySearch extends Component {
 
     return (
       <>
-        <div className="alerts">
-          <InfoAlert text={this.state.infoText} />
-          <ErrorAlert text={this.state.errorText} />
-        </div>
         <div className="CitySearch">
+          <div className="alerts">
+            <InfoAlert text={this.state.infoText} />
+            <ErrorAlert text={this.state.errorText} />
+          </div>
           <input
             type="text"
             className="city"
