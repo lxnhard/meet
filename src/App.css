@@ -208,6 +208,12 @@ p {
 }
 
 
+.btn-left:hover,
+.btn-right:hover {
+  background-color: var(--color3-light);
+}
+
+
 .summary {
   font-size: 18px;
   font-weight: 600;
