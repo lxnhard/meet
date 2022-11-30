@@ -153,12 +153,20 @@ p {
 }
 
 .event {
-  padding: 10px 10px 45px;
+  padding: 0;
   margin-bottom: 20px;
   text-align: left;
   border: 1px solid var(--color1);
   position: relative;
   box-shadow: 0 0 0 2px #73fed5, 0 0 0 3px #96fedf, 0 0 0 4px #b9ffea;
+}
+
+.event-overview {
+  padding: 10px 10px 5px;
+}
+
+.event-details {
+  padding: 10px 10px 55px;
 }
 
 .summary {
@@ -179,7 +187,6 @@ p {
 
 .datetime-container,
 .location-container {
-  width: 30%;
   display: flex;
   align-items: center;
   margin: 5px 0;
@@ -203,8 +210,6 @@ p {
 .description {
   margin-top: 10px;
 }
-
-
 
 .btn-arrow {
   padding: 0;
