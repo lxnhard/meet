@@ -4,6 +4,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import Paginator from './Paginator';
+import { WarningAlert } from './Alert'
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
 
@@ -15,7 +16,8 @@ class App extends Component {
     location: 'all',
     numberOfEvents: 20,
     page: 1,
-    eventsTotalCount: null
+    eventsTotalCount: null,
+    warningText: ''
   }
 
   updateEvents = (location, eventCount, newPage) => {
@@ -57,8 +59,14 @@ class App extends Component {
     });
   }
 
+  checkOffline = () => {
+    let warningText = !navigator.onLine ? 'Your device is offline. Displayed data may be outdated.' : '';
+    this.setState({ warningText: warningText });
+  }
+
   async componentDidMount() {
     this.mounted = true;
+    this.checkOffline();
     getEvents().then((events) => {
       if (this.mounted) {
         this.setState({ events: events.slice(0, this.state.numberOfEvents), locations: extractLocations(events), eventsTotalCount: events.length });
@@ -74,7 +82,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="header"><a href="/" title="Meet app" className="brand">Meetloaf</a></div>
+        <div className="header"><a href="/meet" title="Meet app" className="brand">Meetloaf</a></div>
+        {this.state.warningText !== '' && <div className="alert-warning">
+          <WarningAlert text={this.state.warningText} />
+        </div>}
         <div className="flex-container">
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents updateEvents={this.updateEvents} page={this.state.page} />
