@@ -60,8 +60,8 @@ class App extends Component {
   }
 
   checkOffline = () => {
-    let warningText = !navigator.onLine ? 'Your device is offline. Displayed data may be outdated.' : '';
-    this.setState({ warningText: warningText });
+    let warningText = navigator.onLine ? '' : 'Your device is offline. Displayed data may be outdated.';
+    this.setState({ warningText });
   }
 
   async componentDidMount() {
