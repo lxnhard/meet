@@ -22,15 +22,29 @@ class Event extends Component {
         navigator.languages && navigator.languages.length
           ? navigator.languages[0]
           : navigator.language;
-      console.log(userLocale);
       const userTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      console.log(userTimeZone);
       let DateTimeConv = new Date(DateTimeRaw).toLocaleString(userLocale, {
         timeZone: userTimeZone,
         dateStyle: 'medium',
         timeStyle: 'short'
       });
       return DateTimeConv;
+    }
+
+    function calcDuration(start, end) {
+      start = new Date(start);
+      end = new Date(end);
+      let timeDiff = end.getTime() - start.getTime();
+      let duration = msToHM(timeDiff);
+      return duration;
+    }
+
+    function msToHM(ms) {
+      let seconds = ms / 1000;
+      const hours = ('0' + parseInt(seconds / 3600)).slice(-2);
+      seconds = seconds % 3600;
+      const minutes = ('0' + parseInt(seconds / 60)).slice(-2);
+      return (hours + ":" + minutes + " h");
     }
 
     return (
@@ -40,8 +54,9 @@ class Event extends Component {
         {!isExpanded && (
           <div className='event-overview'>
             <div className='summary'>{event.summary}</div>
-            <div className='start-time'>{convertDateTime(event.start.dateTime)}</div>
-            <div className='location'>{event.location}</div>
+            <div className="datetime-container"><div className="icon icon-calendar"></div><span className='start-time'>{convertDateTime(event.start.dateTime)}</span></div>
+            <div className="location-container"><div className="icon icon-location"></div><span className='location'>{event.location}</span>
+            </div>
             <button className='btn-arrow btn-details' onClick={this.toggleExpand}></button>
           </div >
         )}
@@ -50,9 +65,9 @@ class Event extends Component {
         {isExpanded && (
           <div className='event-details'>
             <div className='summary'>{event.summary}</div>
-            <div><span className='time-label'>Start: </span><span className='start-time'>{convertDateTime(event.start.dateTime)}</span></div>
-            <div><span className='time-label'>End: </span><span className='end-time'>{convertDateTime(event.end.dateTime)}</span></div>
-            <div className='location'>{event.location}</div>
+            <div className="datetime-container"><div className="icon icon-calendar"></div><span className='start-time'>{convertDateTime(event.start.dateTime)}</span></div>
+            <div className="datetime-container"><div className="icon icon-clock"></div><span className='duration'>{calcDuration(event.start.dateTime, event.end.dateTime)}</span></div>
+            <div className="location-container"><div className="icon icon-location"></div><span className='location'>{event.location}</span></div>
             <div className='description'>{event.description}</div>
             <button className='btn-arrow btn-collapse' onClick={this.toggleExpand}></button>
           </div >
