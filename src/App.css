@@ -161,6 +161,51 @@ p {
   box-shadow: 0 0 0 2px #73fed5, 0 0 0 3px #96fedf, 0 0 0 4px #b9ffea;
 }
 
+.summary {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  border-bottom: 3px solid var(--color-2);
+}
+
+.icon {
+  padding: 0;
+  margin: 0 10px 0 0;
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.datetime-container,
+.location-container {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.icon-calendar {
+  background: no-repeat center/65% url("../public/icon-calendar.svg");
+  background-color: var(--color3-light);
+}
+
+.icon-clock {
+  background: no-repeat center/75% url("../public/icon-clock.svg");
+  background-color: var(--color3-light);
+}
+
+.icon-location {
+  background: no-repeat center/60% url("../public/icon-location.svg");
+  background-color: var(--color3-light);
+}
+
+.description {
+  margin-top: 10px;
+}
+
+
+
 .btn-arrow {
   padding: 0;
   outline: none;
@@ -211,26 +256,6 @@ p {
 .btn-left:hover,
 .btn-right:hover {
   background-color: var(--color3-light);
-}
-
-
-.summary {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.group-name {
-  text-transform: uppercase;
-  font-size: 14px;
-}
-
-.going,
-.visibility {
-  font-style: italic;
-}
-
-.description {
-  overflow-x: hidden;
 }
 
 .button-wrapper {
