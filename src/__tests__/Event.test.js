@@ -47,13 +47,13 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.event-overview')).toHaveLength(0);
   });
 
-  test('render summary, start-time, end-time, description, location in detailed view', () => {
+  test('render summary, start-time, duration, description, location in detailed view', () => {
     EventWrapper.setState({
       isExpanded: true
     });
     expect(EventWrapper.find('.summary')).toHaveLength(1);
     expect(EventWrapper.find('.start-time')).toHaveLength(1);
-    expect(EventWrapper.find('.end-time')).toHaveLength(1);
+    expect(EventWrapper.find('.duration')).toHaveLength(1);
     expect(EventWrapper.find('.location')).toHaveLength(1);
     expect(EventWrapper.find('.description')).toHaveLength(1);
   });
@@ -128,18 +128,28 @@ describe('<Event /> component - correct time conversion', () => {
       timeStyle: 'short'
     });
 
-    let mockEndConvert = new Date(mockData[0].end.dateTime).toLocaleString('en-US', {
-      timeZone: mockTimezone,
-      dateStyle: 'medium',
-      timeStyle: 'short'
-    });
-
     EventWrapper.setState({
       isExpanded: true
     });
 
     expect(EventWrapper.find('.start-time').text()).toBe(mockStartConvert);
-    expect(EventWrapper.find('.end-time').text()).toBe(mockEndConvert);
+  });
+
+  test('render correct duration in expanded state', () => {
+    let mockStart = new Date(mockData[0].start.dateTime);
+    let mockEnd = new Date(mockData[0].end.dateTime);
+    let mocktimeDiff = mockEnd.getTime() - mockStart.getTime();
+    let seconds = mocktimeDiff / 1000;
+    const hours = ('0' + parseInt(seconds / 3600)).slice(-2);
+    seconds = seconds % 3600;
+    const minutes = ('0' + parseInt(seconds / 60)).slice(-2);
+    const duration = hours + ":" + minutes + " h";
+
+    EventWrapper.setState({
+      isExpanded: true
+    });
+
+    expect(EventWrapper.find('.duration').text()).toBe(duration);
   });
 
 });
