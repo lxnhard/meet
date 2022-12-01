@@ -4,6 +4,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import NumberOfEvents from './NumberOfEvents';
 import Paginator from './Paginator';
+import Charts from './Charts';
 import { WarningAlert } from './Alert'
 import { getEvents, extractLocations } from './api';
 import './nprogress.css';
@@ -64,6 +65,17 @@ class App extends Component {
     this.setState({ warningText });
   }
 
+  getData = () => {
+    const { locations, events } = this.state;
+    const data = locations.map((location) => {
+      const number = events.filter((event) => event.location === location).length;
+      const city = location.split(', ').shift();
+      return { city, number };
+    })
+    return data;
+  };
+
+
   async componentDidMount() {
     this.mounted = true;
     this.checkOffline();
@@ -90,6 +102,7 @@ class App extends Component {
           <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
           <NumberOfEvents updateEvents={this.updateEvents} page={this.state.page} />
         </div>
+        <Charts getData={this.getData} />
         <EventList events={this.state.events} />
         <Paginator page={this.state.page} updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} eventsTotalCount={this.state.eventsTotalCount} />
       </div>
