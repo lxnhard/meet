@@ -6,13 +6,14 @@ class CitySearch extends Component {
   constructor() {
     super();
     this.state = {
-      query: '',
+      // query: '',
       suggestions: [],
       showSuggestions: undefined,
       infoText: '',
       errorText: ''
     }
   }
+
 
   handleInputChanged = (event) => {
     const value = event.target.value;
@@ -29,6 +30,7 @@ class CitySearch extends Component {
           errorText: 'Invalid input'
         }
       );
+      this.props.handleQueryChange(value);
     } else if (suggestions.length === 0) {
       this.setState(
         {
@@ -38,6 +40,8 @@ class CitySearch extends Component {
           errorText: ''
         }
       );
+      this.props.handleQueryChange(value);
+
     } else {
       this.setState(
         {
@@ -47,6 +51,8 @@ class CitySearch extends Component {
           errorText: ''
         }
       );
+      this.props.handleQueryChange(value);
+
     }
   }
 
@@ -58,6 +64,7 @@ class CitySearch extends Component {
       infoText: '',
       errorText: ''
     });
+    this.props.handleQueryChange(suggestion);
     this.props.updateEvents(suggestion);
   }
 
@@ -81,7 +88,7 @@ class CitySearch extends Component {
           <input
             type="text"
             className="city"
-            value={this.state.query}
+            value={this.props.query}
             placeholder="Search for a city"
             onChange={this.handleInputChanged}
             onFocus={() => { this.setState({ showSuggestions: true }) }}

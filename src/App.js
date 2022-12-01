@@ -75,6 +75,9 @@ class App extends Component {
     return data;
   };
 
+  handleQueryChange = (query) => {
+    this.setState({ query });
+  }
 
   async componentDidMount() {
     this.mounted = true;
@@ -99,10 +102,10 @@ class App extends Component {
           <WarningAlert text={this.state.warningText} />
         </div>}
         <div className="flex-container">
-          <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+          <CitySearch locations={this.state.locations} location={this.state.location} updateEvents={this.updateEvents} query={this.state.query} handleQueryChange={this.handleQueryChange} />
           <NumberOfEvents updateEvents={this.updateEvents} page={this.state.page} />
         </div>
-        <Charts getData={this.getData} />
+        <Charts getData={this.getData} updateEvents={this.updateEvents} locations={this.state.locations} handleQueryChange={this.handleQueryChange} />
         <EventList events={this.state.events} />
         <Paginator page={this.state.page} updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} eventsTotalCount={this.state.eventsTotalCount} />
       </div>
