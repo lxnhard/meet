@@ -4,26 +4,24 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 
 class Charts extends Component {
 
+  handleChartClick = (city) => {
+    const location = this.props.locations.find((location) => {
+      return location.toUpperCase().indexOf(city.toUpperCase()) > -1;
+    });
+    alert('You clicked city ' + city + " location = " + location);
+    this.props.updateEvents(location);
+    this.props.handleQueryChange(location);
+  }
+
+
   render() {
+    let data = this.props.getData();
 
     return (
-      // <ResponsiveContainer height={400} >
-      //   <ScatterChart
-      //     margin={{
-      //       top: 20, right: 0, bottom: 20, left: 0,
-      //     }}
-      //   >
-      //     <CartesianGrid />
-      //     <XAxis type="category" dataKey="city" name="Location" />
-      //     <YAxis type="number" dataKey="number" name="Number of events" allowDecimals={false} />
-      //     <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-      //     <Scatter data={this.props.getData()} fill="#8884d8" />
-      //   </ScatterChart>
-      // </ResponsiveContainer>
 
       <ResponsiveContainer height={400} >
         <BarChart
-          data={this.props.getData()}
+          data={data}
           margin={{
             top: 20,
             right: 0,
@@ -33,8 +31,10 @@ class Charts extends Component {
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="city" name="Location" />
-          <YAxis allowDecimals={false} />
-          <Bar dataKey="number" fill="#8884d8" />
+          <YAxis width={30} allowDecimals={false} />
+          <Bar dataKey="number" fill="#8884d8"
+            onClick={(undefined, index) => this.handleChartClick(data[index].city)}
+          />
         </BarChart>
       </ResponsiveContainer>
 
