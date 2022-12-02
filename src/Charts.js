@@ -1,6 +1,26 @@
 import React, { Component } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="custom-tooltip">
+        {payload[0].payload.city}: {payload[0].payload.number}
+      </div>
+    );
+  }
+  return null;
+};
+
+const CustomizedAxisTick = ({ x, y, stroke, payload }) => {
+  return (
+    <g transform={`translate(${x},${y})`}>
+      <text x={0} y={0} dx={-2} dy={3} textAnchor="end" fill="#666" fontSize="14" transform="rotate(-90)">
+        {payload.value}
+      </text>
+    </g >
+  );
+}
 
 class Charts extends Component {
 
@@ -8,14 +28,12 @@ class Charts extends Component {
     const location = this.props.locations.find((location) => {
       return location.toUpperCase().indexOf(city.toUpperCase()) > -1;
     });
-    alert('You clicked city ' + city + " location = " + location);
     this.props.updateEvents(location);
     this.props.handleQueryChange(location);
   }
 
-
   render() {
-    let data = this.props.getData();
+    let data = this.props.data;
 
     return (
 
@@ -26,15 +44,17 @@ class Charts extends Component {
             top: 20,
             right: 0,
             left: 0,
-            bottom: 20,
+            bottom: 60,
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="city" name="Location" />
+          <XAxis dataKey="city" name="Location" interval={0} tick={<CustomizedAxisTick />} />
           <YAxis width={30} allowDecimals={false} />
+          <Tooltip
+            content={<CustomTooltip />}
+            wrapperStyle={{ backgroundColor: 'white', outline: 'none' }}
+            cursor={{ fill: '#e6ebed' }} />
           <Bar dataKey="number" fill="#8884d8"
-            onClick={(undefined, index) => this.handleChartClick(data[index].city)}
-          />
+            onClick={(undefined, index) => this.handleChartClick(data[index].city)} />
         </BarChart>
       </ResponsiveContainer>
 
