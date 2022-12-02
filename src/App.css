@@ -278,19 +278,13 @@ p {
   font-family: sans-serif;
 }
 
-.data-vis-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.data-vis-wrapper .recharts-responsive-container {
-  min-width: 100%;
-  display: flex;
-}
-
-.recharts-surface {
-  overflow: visible;
+.custom-tooltip {
+  background-color: var(#fff);
+  color: var(--color3);
+  padding: 4px 6px;
+  border-radius: 2px;
+  border: none;
+  font-family: Source Sans Pro, sans-serif;
 }
 
 .login-button {
