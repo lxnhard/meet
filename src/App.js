@@ -18,7 +18,9 @@ class App extends Component {
     numberOfEvents: 20,
     page: 1,
     eventsTotalCount: null,
-    warningText: ''
+    warningText: '',
+    data: [],
+    query: ''
   }
 
   updateEvents = (location, eventCount, newPage) => {
@@ -65,11 +67,10 @@ class App extends Component {
     this.setState({ warningText });
   }
 
-  getData = () => {
-    const { locations, events } = this.state;
+  getData = (locations, events) => {
     const data = locations.map((location) => {
       const number = events.filter((event) => event.location === location).length;
-      const city = location.split(', ').shift();
+      const city = location.split(', ')[0].split(' - ')[0];
       return { city, number };
     })
     return data;
@@ -84,7 +85,9 @@ class App extends Component {
     this.checkOffline();
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events: events.slice(0, this.state.numberOfEvents), locations: extractLocations(events), eventsTotalCount: events.length });
+        const locations = extractLocations(events);
+        this.setState({ events: events.slice(0, this.state.numberOfEvents), locations: locations, eventsTotalCount: events.length, data: this.getData(locations, events) });
+
       }
     });
   }
@@ -105,7 +108,7 @@ class App extends Component {
           <CitySearch locations={this.state.locations} location={this.state.location} updateEvents={this.updateEvents} query={this.state.query} handleQueryChange={this.handleQueryChange} />
           <NumberOfEvents updateEvents={this.updateEvents} page={this.state.page} />
         </div>
-        <Charts getData={this.getData} updateEvents={this.updateEvents} locations={this.state.locations} handleQueryChange={this.handleQueryChange} />
+        {this.state.data.length > 0 && <Charts data={this.state.data} updateEvents={this.updateEvents} locations={this.state.locations} handleQueryChange={this.handleQueryChange} />}
         <EventList events={this.state.events} />
         <Paginator page={this.state.page} updateEvents={this.updateEvents} numberOfEvents={this.state.numberOfEvents} eventsTotalCount={this.state.eventsTotalCount} />
       </div>
