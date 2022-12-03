@@ -22,7 +22,7 @@ const CustomizedAxisTick = ({ x, y, stroke, payload }) => {
   );
 }
 
-class Charts extends Component {
+class ChartCity extends Component {
 
   handleChartClick = (city) => {
     const location = this.props.locations.find((location) => {
@@ -53,7 +53,7 @@ class Charts extends Component {
             content={<CustomTooltip />}
             wrapperStyle={{ backgroundColor: 'white', outline: 'none' }}
             cursor={{ fill: '#e6ebed' }} />
-          <Bar dataKey="number" fill="#8884d8"
+          <Bar dataKey="number" fill="#8884D8"
             onClick={(undefined, index) => this.handleChartClick(data[index].city)} />
         </BarChart>
       </ResponsiveContainer>
@@ -64,4 +64,4 @@ class Charts extends Component {
 }
 
 
-export default Charts;
+export default ChartCity;
