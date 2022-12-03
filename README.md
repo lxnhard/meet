@@ -1,6 +1,6 @@
-# MEET app
+# MEETLOAF app
 An app that shows upcoming events in different cities. 
-MEET is a serverless, progressive web application (PWA) built with React using a
+MEETLOAF is a serverless, progressive web application (PWA) built with React using a
 test-driven development (TDD) technique. The application uses the Google
 Calendar API to fetch upcoming events.
 
@@ -120,6 +120,9 @@ SCENARIO 1: SHOW A CHART WITH THE NUMBER OF UPCOMING EVENTS IN A SPECIFIC CITY.
 ### Built with
 
 - React
+- TDD/BDD methodology
+- AWS lambda
+- Google Calendar API
 
 ### What I learned
 
