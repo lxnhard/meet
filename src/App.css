@@ -287,6 +287,28 @@ p {
   font-family: Source Sans Pro, sans-serif;
 }
 
+.btn-chart-container {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 999;
+  margin-top: 20px;
+  margin-bottom: -40px;
+}
+
+.btn-chart {
+  padding: 0;
+  outline: none;
+  cursor: pointer;
+  color: #000;
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 6px;
+  background-color: #8884D8;
+  z-index: 999;
+}
+
+
 .login-button {
   color: #494949;
   text-transform: uppercase;
