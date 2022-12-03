@@ -126,4 +126,8 @@ SCENARIO 1: SHOW A CHART WITH THE NUMBER OF UPCOMING EVENTS IN A SPECIFIC CITY.
 
 ### What I learned
 
-- tbd
+- How to build a PWA with React
+- Setting up serverless authentication with AWS Lambda
+- TDD methodology with Enzyme/Jest
+- BDD methodology with Gherkin
+- Using the Google Calendar API
