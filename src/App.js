@@ -34,7 +34,10 @@ class App extends Component {
 
       if (newPage) {
         this.setState(
-          { page: newPage }
+          {
+            events: events.slice(firstEvent, lastEvent),
+            page: newPage
+          }
         );
       } else if (location) {
         const locationEvents = (location === 'all') ?
